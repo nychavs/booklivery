@@ -6,6 +6,11 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    colors:{
+      'botao':'#735238',
+      'navbar': '#735238',
+      'busca':'#B2A189'
+    }
   },
   plugins: [],
 }
