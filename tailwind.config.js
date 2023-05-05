@@ -7,9 +7,14 @@ module.exports = {
   theme: {
     extend: {},
     colors:{
-      'botao':'#735238',
+      'btn':'#735238',
       'navbar': '#735238',
-      'busca':'#B2A189'
+      'search':'#B2A189'
+    },
+    opacity:{
+      'opa-btn':'.91',
+      'opa-navbar':'.91',
+      'opa-search':'.35',
     }
   },
   plugins: [],
