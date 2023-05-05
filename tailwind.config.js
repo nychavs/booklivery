@@ -5,17 +5,20 @@ module.exports = {
    "./pages/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {},
-    colors:{
-      'btn':'#735238',
-      'navbar': '#735238',
-      'search':'#B2A189'
+    extend: {
+
+      colors:{
+        'white': '#ffffff',
+        'btn':'#735238',
+        'navbar': '#735238',
+        'search':'#ece7e2'
+      },
+      opacity:{
+        'opa-btn':'.91',
+        'opa-navbar':'.91',
+        'opa-search':'.80',
+      }
     },
-    opacity:{
-      'opa-btn':'.91',
-      'opa-navbar':'.91',
-      'opa-search':'.35',
-    }
   },
   plugins: [],
 }
