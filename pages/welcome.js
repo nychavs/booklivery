@@ -29,7 +29,7 @@ const Welcome = ({navigation}) => {
         <View className='absolute bottom-3 left-28'>
             <TouchableOpacity 
             onPress={()=>navigation.navigate('Home')}
-            className='bg-yellow-900 hover:bg-yellow-700 text-white font-bold py-2 px-10 rounded'>
+            className='bg-btn hover:bg-yellow-700 text-white font-bold py-2 px-10 rounded'>
                 <View className="flex space-x-4 flex-row items-center">
                     <Text className="text-white text-xl">Get Started</Text>
                     <AntDesign name="arrowright" size={20} color="white" />
