@@ -30,7 +30,7 @@ const Home = ({navigation}) =>{
             <View>
                 <Text className="text-lg mt-5">Categories </Text>
                 <View className="flex-row left-0 justify-around">
-                    <TouchableOpacity className="bg-btn-clear hover:bg-btn rounded">
+                    <TouchableOpacity className="bg-btn-clear rounded focus:bg-btn">
                         <Text className="text-white"> Fiction </Text>
                     </TouchableOpacity>
                     <TouchableOpacity className="bg-btn-clear hover:bg-btn rounded">
