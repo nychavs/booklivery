@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Text, View, TextInput } from "react-native";
 import { EvilIcons } from '@expo/vector-icons';
+import { TouchableOpacity } from "react-native";
 import { SimpleLineIcons } from '@expo/vector-icons';
 
 
@@ -18,15 +19,29 @@ const Home = ({navigation}) =>{
            </View>
            <View className="top-28 left-6">
             <Text className="text-lg">Looking for...?</Text>
-            <View className="left-4 w-80">
+            <View className="left-4 w-80 pt-2">
             <TextInput 
-                className="rounded border-2 border-btn h-10 pl-4 bg-search"
+                className="rounded-lg border-2 border-btn h-11 pl-4 bg-search"
                 onChangeText={setSearch}
                 value={search}
                 placeholder="Ex: Daisy Jones"
                 />
             </View>
+            <View>
+                <Text className="text-lg mt-5">Categories </Text>
+                <View className="flex-row left-0 justify-around">
+                    <TouchableOpacity className="bg-btn-clear hover:bg-btn rounded">
+                        <Text className="text-white"> Fiction </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity className="bg-btn-clear hover:bg-btn rounded">
+                        <Text> Romance </Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity className="bg-btn-clear hover:bg-btn rounded">
+                        <Text> Horror </Text>
+                    </TouchableOpacity>
+                </View>
            </View>
+            </View>
         </View>
         
     )

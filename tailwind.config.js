@@ -11,12 +11,14 @@ module.exports = {
         'white': '#ffffff',
         'btn':'#735238',
         'navbar': '#735238',
-        'search':'#ece7e2'
+        'search':'#ece7e2',
+        'btn-clear':'#B2A189'
       },
       opacity:{
         'opa-btn':'.91',
         'opa-navbar':'.91',
         'opa-search':'.80',
+        'opa-btn-clear':'.35'
       }
     },
   },
