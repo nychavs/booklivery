@@ -9,7 +9,7 @@ const Welcome = ({navigation}) => {
         <ImageBackground
             resizeMode="cover"
             style={{flex: 1, justifyContent: 'center', opacity: 0.6, backgroundColor: 'rgba(0,0,0,1)'}}
-            source={require('C:/Users/46404521873/Desktop/booklivery/assets/Foto01.png')}
+            source={require('C:/Users/46404521873/Desktop/booklivery/assets/foto01.png')}
         />
         <View className="absolute top-20 left-8">
             <Text className='text-4xl text-white font-light'>
