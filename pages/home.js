@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, TextInput } from "react-native";
+import { Text, View, TextInput, Pressable, ScrollView } from "react-native";
 import { EvilIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from "react-native";
 import { SimpleLineIcons } from '@expo/vector-icons';
@@ -15,26 +15,6 @@ const Home = ({navigation}) =>{
     const media = '?alt=media'
     const repositorio = 'https://firebasestorage.googleapis.com/v0/b/booklivery-6641a.appspot.com/o/images%2F'
     // https://firebasestorage.googleapis.com/v0/b/booklivery-6641a.appspot.com/o/images%2Fevelyn_hugo.jpg?alt=media
-    
-    // useEffect(()=>{
-    //     db.collection('livros').onSnapShot(
-    //         (query)=>{
-    //             const list = []
-    //             query.forEach((doc) =>{
-    //                 list.push({...doc.data(), id:doc.id})
-    //         })
-    //         setLivros(list)
-    //     })
-    // },[])
-
-    // useEffect(async () => {
-    //     const querySnapShot = await getDocs(collection(db, 'livros'))
-    //     const list = []
-    //     querySnapShot.forEach(doc =>{
-    //         list.push({ ...doc.data(), id: doc.id})
-    //     })
-    //     setLivros(list)
-    // },[])
 
     useEffect(() => {
         getDocs(collection(db, 'livros'))
@@ -46,10 +26,9 @@ const Home = ({navigation}) =>{
             setLivros(list)
           })
       },[])
-      
-
 
     return(
+        
         <View className="flex h-screen relative">
            <View className="absolute h-20 w-full bg-navbar opacity-opa-navbar">
             <View className="top-8 left-[81%]">
@@ -87,33 +66,46 @@ const Home = ({navigation}) =>{
             <Text className="text-xl mt-5 self-center">Most popular</Text>
             <View className="bg-btn mt-2 w-80 h-0.5"></View>
             <FlatList
-                numColumns={1}
+                numColumns={3}
                 data={livros}
                 renderItem={({item})=>{
                     return(
-                        <View>
-                            <View className="">
+                        <ScrollView>
+                        <View className="top-4 w-24 mb-10">
+                            <View className="self-center mb-1">
+                                <Pressable  onPress={()=>{
+                                    navigation.navigate('Detalhes',
+                                    {id: item.id, nome: item.nome, 
+                                        imagem: item.image, valor: item.valor, 
+                                        numPages: item.numPages, autor: item.autor,
+                                       descricao: item.descricao,})
+                                    }} >
                                 <Image 
-                                source={{uri: 'https://firebasestorage.googleapis.com/v0/b/booklivery-6641a.appspot.com/o/images%2Fevelyn_hugo.jpg?alt=media',}}
-                                
-                                />
+                               source={require('C:/Users/46404521873/Desktop/booklivery/assets/daisy.jpg')}
+                               style={{width:70, height:110, borderRadius:9}} />
+                               </Pressable>
                             </View>
-                            <Text
-                            onPress={()=>{
-                                navigation.navigate('Detalhes',
-                                {id: item.id, nome: item.nome, 
-                                imagem: item.image, valor: item.valor, 
-                                numPages: item.numPages, autor: item.autor,})
-                            }}
-                            > {item.nome} </Text>
+                            <View className="self-center">
+                            <Text className="text-center"
+                               onPress={()=>{
+                                   navigation.navigate('Detalhes',
+                                   {id: item.id, nome: item.nome, 
+                                    imagem: item.image, valor: item.valor, 
+                                    numPages: item.numPages, autor: item.autor,
+                                    descricao: item.descricao,})
+                                }}
+                                > {item.nome} </Text>
+                            </View>
                         </View>
+                        </ScrollView>
                 )
-                }}
-
+            }}
+            
             />
            </View>
             </View>
         </View>
+        
         
     )
 }
