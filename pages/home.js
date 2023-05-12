@@ -3,25 +3,50 @@ import { Text, View, TextInput } from "react-native";
 import { EvilIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from "react-native";
 import { SimpleLineIcons } from '@expo/vector-icons';
-import { getDocs, collection } from "firebase/firestore";
 import { db } from "../src/config/firebase"
 import { FlatList } from "react-native";
 import { Image } from "react-native";
+import {getDocs, collection} from 'firebase/firestore';
 
 const Home = ({navigation}) =>{
-    const [teste,setTeste] = useState()
+    const [livros,setLivros] = useState([])
     const [search, setSearch] = React.useState("")
 
     const media = '?alt=media'
     const repositorio = 'https://firebasestorage.googleapis.com/v0/b/booklivery-6641a.appspot.com/o/images%2F'
-    useEffect(async ()=>{
-        const querySnapShot = await getDocs(collection(db, 'livros'))
-        const list = []
-        querySnapShot.forEach(doc =>{
-            list.push({...doc.data(), id:doc.id})
-        })
-        setTeste(list)
-    },[])
+    // https://firebasestorage.googleapis.com/v0/b/booklivery-6641a.appspot.com/o/images%2Fevelyn_hugo.jpg?alt=media
+    
+    // useEffect(()=>{
+    //     db.collection('livros').onSnapShot(
+    //         (query)=>{
+    //             const list = []
+    //             query.forEach((doc) =>{
+    //                 list.push({...doc.data(), id:doc.id})
+    //         })
+    //         setLivros(list)
+    //     })
+    // },[])
+
+    // useEffect(async () => {
+    //     const querySnapShot = await getDocs(collection(db, 'livros'))
+    //     const list = []
+    //     querySnapShot.forEach(doc =>{
+    //         list.push({ ...doc.data(), id: doc.id})
+    //     })
+    //     setLivros(list)
+    // },[])
+
+    useEffect(() => {
+        getDocs(collection(db, 'livros'))
+          .then((querySnapShot) => {
+            const list = []
+            querySnapShot.forEach(doc =>{
+              list.push({ ...doc.data(), id: doc.id})
+            })
+            setLivros(list)
+          })
+      },[])
+      
 
 
     return(
@@ -63,15 +88,24 @@ const Home = ({navigation}) =>{
             <View className="bg-btn mt-2 w-80 h-0.5"></View>
             <FlatList
                 numColumns={1}
-                data={teste}
+                data={livros}
                 renderItem={({item})=>{
                     return(
                         <View>
                             <View className="">
                                 <Image 
-                                source={{uri: repositorio+item.image+media}}/>
+                                source={{uri: 'https://firebasestorage.googleapis.com/v0/b/booklivery-6641a.appspot.com/o/images%2Fevelyn_hugo.jpg?alt=media',}}
+                                
+                                />
                             </View>
-                            <Text> {item.nome} </Text>
+                            <Text
+                            onPress={()=>{
+                                navigation.navigate('Detalhes',
+                                {id: item.id, nome: item.nome, 
+                                imagem: item.image, valor: item.valor, 
+                                numPages: item.numPages, autor: item.autor,})
+                            }}
+                            > {item.nome} </Text>
                         </View>
                 )
                 }}
