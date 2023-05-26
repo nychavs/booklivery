@@ -34,7 +34,9 @@ const Detalhes = ({navigation, route}) =>{
                         </View>
                         <View className="mt-12 w-80 h-40 self-center">
                             <Text className="text-base">{descricao}</Text>
-                            <TouchableOpacity>
+                            <TouchableOpacity
+                                onPress='alterar height da janela text descricao'
+                            >
                                 <Text className="text-navbar"> + See more</Text>
                             </TouchableOpacity>
                         </View>

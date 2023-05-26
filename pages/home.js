@@ -51,7 +51,9 @@ const Home = ({navigation}) =>{
             <View>
                 <Text className="text-xl mt-5 mb-2 left-6 ">Categories </Text>
                 <View className="flex-row justify-evenly">
-                    <TouchableOpacity className="bg-btn-clear rounded focus:bg-btn px-3">
+                    <TouchableOpacity 
+                    className="bg-btn-clear rounded focus:bg-btn px-3"
+                    onPress='filtrar de acordo'>
                         <Text className="text-lg"> Fiction </Text>
                     </TouchableOpacity>
                     <TouchableOpacity className="bg-btn-clear focus:bg-btn rounded px-3">
