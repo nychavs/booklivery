@@ -94,7 +94,7 @@ const Home = ({navigation}) =>{
                                    {id: item.id, nome: item.nome, 
                                     imagem: item.image, valor: item.valor, 
                                     numPages: item.numPages, autor: item.autor,
-                                    descricao: item.descricao,})
+                                    descricao: item.descricao, avaliacao:item.avaliacao})
                                 }}
                                 > {item.nome} </Text>
                             </View>
