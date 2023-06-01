@@ -96,7 +96,7 @@ const Home = ({navigation}) =>{
                                     numPages: item.numPages, autor: item.autor,
                                     descricao: item.descricao, avaliacao:item.avaliacao})
                                 }}
-                                > {item.nome} </Text>
+                                >{item.nome}</Text>
                             </View>
                         </View>
                         </ScrollView>
