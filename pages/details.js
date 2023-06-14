@@ -8,8 +8,19 @@ import { Entypo } from '@expo/vector-icons';
 const Detalhes = ({navigation, route}) =>{
     const { id, nome, imagem, autor, valor, numPages, descricao, avaliacao} = route.params;
     const [valorCart, setValorCart] = useState() 
+    const [wish, setWish] = useState([])
     const [qtdUnit, setqtdUnit] = useState() 
     const [modalVisible, setModalVisible] = useState(false)
+
+const atualizaLista = () => {
+    const newLivro = { nome, imagem, valor }; 
+    const newList = [...wish, newLivro]; 
+    setWish(newList);
+    console.log(wish);
+    setModalVisible(!modalVisible);
+  };
+  
+      
 
     return(
         <View className="flex h-screen relative">
@@ -27,7 +38,7 @@ const Detalhes = ({navigation, route}) =>{
                 <Text className="text-xl self-center">More information</Text>
                     <View className="bg-btn mt-2 ml-4 w-72 flex h-0.5"></View>
                     <View className="flex-row justify-between top-5">
-                        <Image source={require('C:/Users/46404521873/Desktop/booklivery/assets/daisy.jpg')} 
+                        <Image source={require('../assets/daisy.jpg')} 
                         style={{width:130, height:200, borderRadius:9}}
                         />
                         <View className="flex-column w-44 justify-evenly">
@@ -47,7 +58,7 @@ const Detalhes = ({navigation, route}) =>{
                         </View>
                     <View className="bg-btn mt-10 ml-4 w-72 h-0.5"></View>
                         <View className="justify-center mt-3 flex-row">
-                            <Text className="pt-1 text-base">Rate </Text>
+                            <Text className="pt-1 text-base">Rate: {avaliacao} </Text>
                             <Entypo name="star" size={26} color="#735238" /> 
                         </View>
                         <View className="mt-4 flex self-center">
@@ -55,35 +66,32 @@ const Detalhes = ({navigation, route}) =>{
                                 animationType="fade"
                                 transparent={true}
                                 visible={modalVisible}
-
                                 onRequestClose={()=>{
                                     setModalVisible(!modalVisible)}} >
                                 <View className="bg-white w-80 h-72 rounded-2xl self-center  mt-52">
-                                    <Text className="text-xl">You wish list: </Text>
+                                    <Text className="text-xl pt-2 pl-2">Your wish list: </Text>
                                     <View className="flex flex-row items-center pt-3 justify-evenly">
-                                        <Image
-                                            source={require('C:/Users/46404521873/Desktop/booklivery/assets/daisy.jpg')}
-                                            style={{width: 70, height: 100, borderRadius: 9}}
-                                        />
                                         <View className="flex flex-col">
-                                            <Text className="text-base pb-2">{nome}</Text>
-                                            <Text className="text-base pb-2"> ?? unit</Text>
+                                        <View>
+                                            {wish.map(item => (
+                                            <Text key={item.nome}>{item.nome}</Text>
+                                            ))}
+                                        </View>
+                                        <Text className="text-base text-btn">Total Price: {valor}</Text>                                                
                                         </View>
                                     </View>
-                                    <View  l>
-                                            <Text className="text-base"> Total Price: </Text>
-                                            <Text className="text-base">{valor}</Text>
-                                    </View>
+                              
+                                   
                                     <View className="items-center">
                                         <TouchableOpacity
-                                        className="bg-btn-clear px-2 rounded items-center w-36"
-                                        onPress={()=> setModalVisible(!modalVisible)}>
+                                        className="bg-btn-clear px-2 rounded items-center mt-4 w-36"
+                                        onPress={()=> navigation.navigate("Home")}>
                                             <Text className="text-base">Add more books </Text>
                                         </TouchableOpacity>
                                             <Text className="text-base"> or </Text>
                                         <TouchableOpacity
-                                        className="bg-btn px-[14] rounded w-36 items-center"
-                                        onPress={()=>navigation.navigate("Payment")}>
+                                        className="bg-btn px-[14] rounded w-36 items-center">
+                                        {/* // onPress={()=>navigation.navigate('Payment',{nome})}> */}
                                             <Text className="text-white text-base">Go to payment </Text>
                                         </TouchableOpacity>
                                     </View>
@@ -92,8 +100,7 @@ const Detalhes = ({navigation, route}) =>{
                 
                             <TouchableOpacity 
                             className="bg-btn w-40 rounded-md"
-                            onPress={()=>setModalVisible(!modalVisible)}
-                            >
+                            onPress={()=>atualizaLista()}>
                                 <Text className="text-white text-lg self-center py-1 text-center">Add to wish list</Text>
                             </TouchableOpacity>
                         </View>

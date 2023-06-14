@@ -13,10 +13,8 @@ const Login = ({navigation}) => {
     const loginFirebase = async () => {
         try {
           var teste = await signInWithEmailAndPassword(auth, email, password);
-          console.log(teste)
           navigation.navigate("Home")
         } catch (err) {
-          console.error(err);
           alert("User not found")
           setEmail("")
           setPassword("")
