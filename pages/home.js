@@ -76,21 +76,21 @@ const Home = ({navigation}) =>{
                         <View className="top-4 w-24 mb-10">
                             <View className="self-center mb-1">
                                 <Pressable  onPress={()=>{
-                                    navigation.navigate('Detalhes',
+                                    navigation.navigate('Details',
                                     {id: item.id, nome: item.nome, 
                                         imagem: item.image, valor: item.valor, 
                                         numPages: item.numPages, autor: item.autor,
                                        descricao: item.descricao,})
                                     }} >
                                 <Image 
-                               source={require('C:/Users/46404521873/Desktop/booklivery/assets/daisy.jpg')}
+                               source={require('../assets/daisy.jpg')}
                                style={{width:70, height:110, borderRadius:9}} />
                                </Pressable>
                             </View>
                             <View className="self-center">
                             <Text className="text-center"
                                onPress={()=>{
-                                   navigation.navigate('Detalhes',
+                                   navigation.navigate('Details',
                                    {id: item.id, nome: item.nome, 
                                     imagem: item.image, valor: item.valor, 
                                     numPages: item.numPages, autor: item.autor,

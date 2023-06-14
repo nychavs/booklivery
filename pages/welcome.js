@@ -9,7 +9,7 @@ const Welcome = ({navigation}) => {
         <ImageBackground
             resizeMode="cover"
             style={{flex: 1, justifyContent: 'center', opacity: 0.6, backgroundColor: 'rgba(0,0,0,1)'}}
-            source={require('C:/Users/46404521873/Desktop/booklivery/assets/foto01.png')}
+            source={require('../assets/foto01.png')}
         />
         <View className="absolute top-20 left-8">
             <Text className='text-4xl text-white font-light'>
@@ -28,8 +28,8 @@ const Welcome = ({navigation}) => {
         </View>
         <View className='absolute bottom-3 left-28'>
             <TouchableOpacity 
-            onPress={()=>navigation.navigate('Home')}
-            className='bg-btn hover:bg-yellow-700 text-white font-bold py-2 px-10 rounded-md'>
+            onPress={()=>navigation.navigate('Login')}
+            className='bg-btn hover:bg-yellow-700 py-2 px-10 rounded-md'>
                 <View className="flex space-x-4 flex-row items-center">
                     <Text className="text-white text-xl">Get Started</Text>
                     <AntDesign name="arrowright" size={20} color="white" />
