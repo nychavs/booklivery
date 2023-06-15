@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { Text, View, TextInput, Pressable, ScrollView } from "react-native";
 import { EvilIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from "react-native";
@@ -26,6 +26,24 @@ const Home = ({navigation}) =>{
             setLivros(list)
           })
       },[])
+
+      const atualizaLista = () => {
+        const newLivro = { nome, valor }; 
+        console.log("teste")
+        // setWish(prevWish => [...prevWish, newLivro]);
+        // setWish([newLivro])
+        
+        setModalVisible(!modalVisible);
+        const dados = wish;
+        
+        console.log(dados)
+        console.log(newLivro)
+        dados.push(newLivro)
+        setWish(dados)
+
+        console.log(newLivro)
+        console.log(wish)
+  };
 
     return(
         
@@ -94,7 +112,7 @@ const Home = ({navigation}) =>{
                                    {id: item.id, nome: item.nome, 
                                     imagem: item.image, valor: item.valor, 
                                     numPages: item.numPages, autor: item.autor,
-                                    descricao: item.descricao, avaliacao:item.avaliacao})
+                                    descricao: item.descricao, avaliacao:item.avaliacao},atualizaLista())
                                 }}
                                 >{item.nome}</Text>
                             </View>

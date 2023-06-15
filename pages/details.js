@@ -1,25 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, Image, Alert, Modal} from "react-native";
 import { TouchableOpacity } from "react-native";
 import { EvilIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 
-const Detalhes = ({navigation, route}) =>{
+const Detalhes = ({navigation, route, props}) =>{
     const { id, nome, imagem, autor, valor, numPages, descricao, avaliacao} = route.params;
     const [valorCart, setValorCart] = useState() 
     const [wish, setWish] = useState([])
     const [qtdUnit, setqtdUnit] = useState() 
     const [modalVisible, setModalVisible] = useState(false)
+    
+    const atualizaLista = () => {
+        const newLivro = { nome, valor }; 
+        // setWish(prevWish => [...prevWish, newLivro]);
+        // setWish([newLivro])
+        
+        const dados = wish;
+        
+        console.log(dados)
+        console.log(newLivro)
+        dados.push(newLivro)
+        setWish(dados)
 
-const atualizaLista = () => {
-    const newLivro = { nome, imagem, valor }; 
-    const newList = [...wish, newLivro]; 
-    setWish(newList);
-    console.log(wish);
-    setModalVisible(!modalVisible);
+        setModalVisible(!modalVisible);
+        console.log(newLivro)
+        console.log(wish)
   };
-  
       
 
     return(
@@ -90,8 +98,8 @@ const atualizaLista = () => {
                                         </TouchableOpacity>
                                             <Text className="text-base"> or </Text>
                                         <TouchableOpacity
-                                        className="bg-btn px-[14] rounded w-36 items-center">
-                                        {/* // onPress={()=>navigation.navigate('Payment',{nome})}> */}
+                                        className="bg-btn px-[14] rounded w-36 items-center"
+                                        onPress={()=>navigation.navigate('Payment',{nome})}>
                                             <Text className="text-white text-base">Go to payment </Text>
                                         </TouchableOpacity>
                                     </View>

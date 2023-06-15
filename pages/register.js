@@ -14,15 +14,15 @@ const Register = ({navigation}) => {
     const upload = e => {
         e.preventDefault()
         if (!nome) {
-          Alert('Missign name!')
+          alert('Missign name!')
           return
         }
         if (!email) {
-          Alert('missing e-mail!')
+          alert('missing e-mail!')
           return
         }
         if (!senha) {
-          Alert('missing password!')
+          alert('missing password!')
           return
         }
         adicionar()
